@@ -7,7 +7,8 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --bg: #0a0a0a;
@@ -510,7 +511,10 @@
     <div class="projects">
       <article class="proj r" data-modal="m1">
         <div class="proj-vis" style="background:#1a1712;padding:0;overflow:hidden">
-          <img src="mockup-royaltouch.png" alt="RoyalTouch Cleaning mockup" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+          <picture>
+            <source srcset="mockup-royaltouch.webp" type="image/webp">
+            <img src="mockup-royaltouch.png" alt="RoyalTouch Cleaning mockup" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+          </picture>
         </div>
         <div class="proj-meta">
           <div class="l">
@@ -525,7 +529,10 @@
       </article>
       <article class="proj r" data-modal="m2" style="transition-delay:.08s">
         <div class="proj-vis" style="background:#0a0a0a;padding:0;overflow:hidden">
-          <img src="mockup-clippers.png" alt="Clippers Barbershop mockup" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+          <picture>
+            <source srcset="mockup-clippers.webp" type="image/webp">
+            <img src="mockup-clippers.png" alt="Clippers Barbershop mockup" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+          </picture>
         </div>
         <div class="proj-meta">
           <div class="l">
