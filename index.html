@@ -357,9 +357,21 @@
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
   }
+
+  /* preloader */
+  #preloader{
+    position:fixed;inset:0;background:#0a0a0a;z-index:9999;
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity .6s ease;
+  }
+  #preloader.fade{opacity:0;pointer-events:none}
+  #preloader canvas{display:block}
+  body.loading{overflow:hidden}
 </style>
 </head>
 <body>
+
+<div id="preloader"><canvas id="matrix"></canvas></div>
 
 <div class="progress" id="progress"></div>
 
@@ -778,6 +790,49 @@
 </div>
 
 <script>
+  /* preloader matrix */
+  (function(){
+    document.body.classList.add('loading');
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF<>{}[];='.split('');
+    const fs = 14;
+    let cols, drops;
+
+    function resize(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      cols = Math.floor(canvas.width / fs);
+      drops = Array(cols).fill(1);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function draw(){
+      ctx.fillStyle = 'rgba(10,10,10,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = fs + 'px monospace';
+      drops.forEach((y, i) => {
+        const ch = chars[Math.floor(Math.random() * chars.length)];
+        const bright = Math.random() > 0.95;
+        ctx.fillStyle = bright ? '#ffffff' : '#00e676';
+        ctx.fillText(ch, i * fs, y * fs);
+        if (y * fs > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+    }
+
+    const interval = setInterval(draw, 40);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      const loader = document.getElementById('preloader');
+      loader.classList.add('fade');
+      document.body.classList.remove('loading');
+      setTimeout(() => loader.remove(), 700);
+    }, 2800);
+  })();
+
   /* progress + nav */
   const sp = document.getElementById('progress');
   const onScroll = () => {
