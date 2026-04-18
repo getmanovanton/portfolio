@@ -415,6 +415,17 @@
   .lang button.active{background:var(--bg-3);color:var(--fg)}
   @media (max-width: 760px){.lang{display:none}}
 
+  @media (hover: none){
+    .proj:hover,.svc-card:hover,.price:hover,.why-card:hover,.step:hover{transform:none;border-color:var(--line)}
+    .proj:hover .proj-vis img{transform:none}
+    .ch:hover{padding-left:0}
+    .ch:hover .val{color:var(--fg-dim)}
+    .btn:hover{transform:none;background:var(--fg);color:var(--bg)}
+    .btn.ghost:hover{background:transparent;color:var(--fg)}
+    .nav-links a:hover{color:var(--fg-dim);background:none}
+    .nav-cta:hover{background:var(--fg);color:var(--bg)}
+  }
+
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
   }
@@ -1005,10 +1016,10 @@
     const wrap = document.querySelector('.pricing');
     const cards = [...wrap.querySelectorAll('.price')];
     const dotsEl = document.getElementById('pricing-dots');
-    let active = 1, mobile = false;
+    let active = 0, mobile = false;
 
     dotsEl.innerHTML = cards.map((_,i) =>
-      `<span class="carousel-dot${i===1?' active':''}"></span>`).join('');
+      `<span class="carousel-dot${i===0?' active':''}"></span>`).join('');
     const dots = dotsEl.querySelectorAll('.carousel-dot');
 
     function setPos(card, offset) {
