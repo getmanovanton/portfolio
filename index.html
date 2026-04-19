@@ -1038,85 +1038,31 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.5"/></svg>
     </button>
     <h2>Get your free homepage mockup</h2>
-    <p class="mf-sub">Fill in a few details — I'll send a custom design for your business within 48 hours. No payment, no commitment.</p>
+    <p class="mf-sub">I'll design a custom homepage for your business within 48 hours.<br>No payment. No commitment.</p>
     <form id="mockup-form-el" action="https://formspree.io/f/mdayzzow" method="POST" onsubmit="handleMockupSubmit(event)">
       <input type="hidden" name="_subject" value="🎨 Free Mockup Request">
-      <div class="mf-row">
-        <div class="mf-group">
-          <label>Your name *</label>
-          <input type="text" name="name" required placeholder="Jane Doe"/>
-        </div>
-        <div class="mf-group">
-          <label>Business name *</label>
-          <input type="text" name="business_name" required placeholder="Mike's Barbershop"/>
-        </div>
+      <div class="mf-group">
+        <label>Your name *</label>
+        <input type="text" name="name" required placeholder="Jane Doe"/>
       </div>
       <div class="mf-group">
-        <label>Business type *</label>
-        <div class="mf-select" id="mf-select-wrap">
-          <input type="hidden" name="business_type" id="mf-biz-type" value="">
-          <div class="mf-select-trigger" id="mf-select-trigger">
-            <span class="mf-sel-val" id="mf-sel-val">Select your industry…</span>
-            <svg class="mf-sel-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="mf-dropdown" id="mf-dropdown">
-            <div class="mf-opt" data-value="Barbershop">Barbershop</div>
-            <div class="mf-opt" data-value="Hair Salon / Spa">Hair Salon / Spa</div>
-            <div class="mf-opt" data-value="Restaurant / Café">Restaurant / Café</div>
-            <div class="mf-opt" data-value="Cleaning Service">Cleaning Service</div>
-            <div class="mf-opt" data-value="Contractor / Trades">Contractor / Trades</div>
-            <div class="mf-opt" data-value="Fitness / Yoga / Studio">Fitness / Yoga / Studio</div>
-            <div class="mf-opt" data-value="Retail / Boutique">Retail / Boutique</div>
-            <div class="mf-opt" data-value="Medical / Dental / Beauty">Medical / Dental / Beauty</div>
-            <div class="mf-opt" data-value="Other">Other</div>
-          </div>
-        </div>
-      </div>
-      <div class="mf-group mf-reveal" id="mf-other-group">
-        <label>Describe your business *</label>
-        <input type="text" name="business_other" id="mf-other-input" placeholder="e.g. Tattoo studio, dog grooming…"/>
+        <label>Business name *</label>
+        <input type="text" name="business_name" required placeholder="Mike's Barbershop"/>
       </div>
       <div class="mf-group">
-        <label>Your email * (we'll send the mockup here)</label>
+        <label>Your email * (I'll send the mockup here)</label>
         <input type="email" name="email" id="mf-email" required placeholder="you@yourbusiness.com"/>
         <span id="mf-email-error" style="display:none;font-family:var(--mono);font-size:11px;color:#ff5555;margin-top:4px"></span>
       </div>
-      <div class="mf-divider"></div>
       <div class="mf-group">
-        <label>What should the website do? (pick all that apply)</label>
-        <div class="mf-checks">
-          <label class="mf-check"><input type="checkbox" name="goal_booking" value="Online booking"> Online booking</label>
-          <label class="mf-check"><input type="checkbox" name="goal_quote" value="Quote / contact form"> Quote / contact form</label>
-          <label class="mf-check"><input type="checkbox" name="goal_services" value="Show services & pricing"> Services & pricing</label>
-          <label class="mf-check"><input type="checkbox" name="goal_gallery" value="Photo gallery"> Photo gallery</label>
-          <label class="mf-check"><input type="checkbox" name="goal_ecom" value="Online shop"> Online shop</label>
-          <label class="mf-check"><input type="checkbox" name="goal_other" value="Other"> Other</label>
-        </div>
+        <label>What should your website include? <span style="color:var(--fg-mute)">(optional)</span></label>
+        <textarea name="notes" placeholder="Booking form, gallery, pricing, anything specific…" style="min-height:72px"></textarea>
       </div>
-      <div class="mf-group" style="margin-top:14px">
-        <label>Do you have a logo?</label>
-        <div class="mf-radios">
-          <label class="mf-radio"><input type="radio" name="has_logo" value="Yes" id="mf-logo-yes"> Yes</label>
-          <label class="mf-radio"><input type="radio" name="has_logo" value="No"> No</label>
-          <label class="mf-radio"><input type="radio" name="has_logo" value="In progress"> In progress</label>
-        </div>
-      </div>
-      <div class="mf-reveal" id="mf-logo-group" style="font-family:var(--mono);font-size:12px;color:var(--fg-mute);padding:10px 14px;border:1px solid var(--line);border-radius:8px;line-height:1.6">
-        We'll email you to request your logo — just reply with the file.
-      </div>
-      <div class="mf-group">
-        <label>Any websites whose style you like? (optional)</label>
-        <input type="text" name="references" placeholder="https://example.com, https://…"/>
-      </div>
-      <div class="mf-group">
-        <label>Anything else I should know? (optional)</label>
-        <textarea name="notes" placeholder="Colors, vibe, specific features, deadline…"></textarea>
-      </div>
-      <div class="mf-divider"></div>
-      <button type="submit" class="mf-submit"><span id="mf-btn-text">Send — get my free mockup</span></button>
-      <label class="mf-privacy">
+      <button type="submit" class="mf-submit" style="margin-top:8px"><span id="mf-btn-text">Get my free mockup</span></button>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--fg-mute);text-align:center;margin-top:10px">Takes 30 seconds. No spam.</p>
+      <label class="mf-privacy" style="margin-top:10px">
         <input type="checkbox" id="mf-privacy-check" required/>
-        I agree to the <a href="privacy.html" target="_blank" style="color:var(--fg-dim);text-decoration:underline">Privacy Policy</a> and consent to being contacted about my mockup.
+        I agree to the <a href="privacy.html" target="_blank" style="color:var(--fg-dim);text-decoration:underline">Privacy Policy</a>
       </label>
     </form>
   </div>
@@ -1446,45 +1392,7 @@
     window.addEventListener('resize', check);
   })();
 
-  /* custom select dropdown */
-  const mfWrap = document.getElementById('mf-select-wrap');
-  const mfSelVal = document.getElementById('mf-sel-val');
-  const mfBizType = document.getElementById('mf-biz-type');
-
-  document.getElementById('mf-select-trigger').addEventListener('click', e => {
-    e.stopPropagation();
-    mfWrap.classList.toggle('open');
-  });
-
-  document.querySelectorAll('.mf-opt').forEach(opt => {
-    opt.addEventListener('click', () => {
-      const val = opt.dataset.value;
-      mfBizType.value = val;
-      mfSelVal.textContent = val;
-      mfSelVal.classList.add('chosen');
-      document.querySelectorAll('.mf-opt').forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      mfWrap.classList.remove('open');
-      const otherGroup = document.getElementById('mf-other-group');
-      const otherInput = document.getElementById('mf-other-input');
-      const show = val === 'Other';
-      otherGroup.style.display = show ? 'block' : 'none';
-      otherInput.required = show;
-    });
-  });
-
-  document.addEventListener('click', e => {
-    if (!mfWrap.contains(e.target)) mfWrap.classList.remove('open');
-  });
-
-  document.querySelectorAll('[name="has_logo"]').forEach(r => {
-    r.addEventListener('change', function() {
-      const g = document.getElementById('mf-logo-group');
-      g.style.display = this.value === 'Yes' ? 'block' : 'none';
-    });
-  });
-
-/* mockup modal */
+  /* mockup modal */
   function openMockupModal() {
     document.getElementById('mockup-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1503,14 +1411,7 @@
   async function handleMockupSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    if (!document.getElementById('mf-biz-type').value) {
-      const trigger = document.getElementById('mf-select-trigger');
-      trigger.style.borderColor = '#ff5555';
-      trigger.scrollIntoView({block:'center',behavior:'smooth'});
-      setTimeout(() => trigger.style.borderColor = '', 2000);
-      return;
-    }
-    const emailEl = document.getElementById('mf-email');
+const emailEl = document.getElementById('mf-email');
     const emailErr = document.getElementById('mf-email-error');
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRe.test(emailEl.value.trim())) {
