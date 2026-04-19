@@ -496,6 +496,18 @@
   .mf-submit:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 0 0 2px rgba(0,230,118,.5),0 8px 22px rgba(0,230,118,.2)}
   .mf-privacy{display:flex;align-items:flex-start;gap:8px;font-family:var(--mono);font-size:11px;color:var(--fg-mute);cursor:pointer;margin-top:12px}
   .mf-privacy input{margin-top:2px;accent-color:var(--accent);flex-shrink:0}
+  .mf-select{position:relative;user-select:none}
+  .mf-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--fg-dim);cursor:pointer;transition:border-color .2s}
+  .mf-select-trigger:hover,.mf-select.open .mf-select-trigger{border-color:var(--accent)}
+  .mf-sel-arrow{flex-shrink:0;transition:transform .2s var(--ease);color:var(--fg-mute)}
+  .mf-select.open .mf-sel-arrow{transform:rotate(180deg)}
+  .mf-sel-val{flex:1}
+  .mf-sel-val.chosen{color:var(--fg)}
+  .mf-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-2);border:1px solid var(--line-2);border-radius:8px;overflow:hidden;z-index:200;display:none;box-shadow:0 8px 28px rgba(0,0,0,.5)}
+  .mf-select.open .mf-dropdown{display:block;animation:fadeIn .15s var(--ease)}
+  .mf-opt{padding:11px 14px;font-size:14px;color:var(--fg-dim);cursor:pointer;transition:background .12s,color .12s}
+  .mf-opt:hover{background:var(--bg-3);color:var(--fg)}
+  .mf-opt.active{color:var(--accent);background:var(--accent-soft)}
   .mf-reveal{display:none;animation:fadeIn .2s var(--ease)}
   .mf-file-zone{border:1px dashed var(--line-2);border-radius:8px;padding:16px 14px;cursor:pointer;transition:border-color .2s;text-align:center}
   .mf-file-zone:hover{border-color:var(--accent)}
@@ -1043,18 +1055,24 @@
       </div>
       <div class="mf-group">
         <label>Business type *</label>
-        <select name="business_type" id="mf-biz-type" required>
-          <option value="" disabled selected>Select your industry…</option>
-          <option>Barbershop</option>
-          <option>Hair Salon / Spa</option>
-          <option>Restaurant / Café</option>
-          <option>Cleaning Service</option>
-          <option>Contractor / Trades</option>
-          <option>Fitness / Yoga / Studio</option>
-          <option>Retail / Boutique</option>
-          <option>Medical / Dental / Beauty</option>
-          <option value="Other">Other</option>
-        </select>
+        <div class="mf-select" id="mf-select-wrap">
+          <input type="hidden" name="business_type" id="mf-biz-type" value="">
+          <div class="mf-select-trigger" id="mf-select-trigger">
+            <span class="mf-sel-val" id="mf-sel-val">Select your industry…</span>
+            <svg class="mf-sel-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="mf-dropdown" id="mf-dropdown">
+            <div class="mf-opt" data-value="Barbershop">Barbershop</div>
+            <div class="mf-opt" data-value="Hair Salon / Spa">Hair Salon / Spa</div>
+            <div class="mf-opt" data-value="Restaurant / Café">Restaurant / Café</div>
+            <div class="mf-opt" data-value="Cleaning Service">Cleaning Service</div>
+            <div class="mf-opt" data-value="Contractor / Trades">Contractor / Trades</div>
+            <div class="mf-opt" data-value="Fitness / Yoga / Studio">Fitness / Yoga / Studio</div>
+            <div class="mf-opt" data-value="Retail / Boutique">Retail / Boutique</div>
+            <div class="mf-opt" data-value="Medical / Dental / Beauty">Medical / Dental / Beauty</div>
+            <div class="mf-opt" data-value="Other">Other</div>
+          </div>
+        </div>
       </div>
       <div class="mf-group mf-reveal" id="mf-other-group">
         <label>Describe your business *</label>
@@ -1435,13 +1453,35 @@
     window.addEventListener('resize', check);
   })();
 
-  /* mockup conditional fields */
-  document.getElementById('mf-biz-type').addEventListener('change', function() {
-    const g = document.getElementById('mf-other-group');
-    const inp = document.getElementById('mf-other-input');
-    const show = this.value === 'Other';
-    g.style.display = show ? 'block' : 'none';
-    inp.required = show;
+  /* custom select dropdown */
+  const mfWrap = document.getElementById('mf-select-wrap');
+  const mfSelVal = document.getElementById('mf-sel-val');
+  const mfBizType = document.getElementById('mf-biz-type');
+
+  document.getElementById('mf-select-trigger').addEventListener('click', e => {
+    e.stopPropagation();
+    mfWrap.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mf-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.dataset.value;
+      mfBizType.value = val;
+      mfSelVal.textContent = val;
+      mfSelVal.classList.add('chosen');
+      document.querySelectorAll('.mf-opt').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      mfWrap.classList.remove('open');
+      const otherGroup = document.getElementById('mf-other-group');
+      const otherInput = document.getElementById('mf-other-input');
+      const show = val === 'Other';
+      otherGroup.style.display = show ? 'block' : 'none';
+      otherInput.required = show;
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!mfWrap.contains(e.target)) mfWrap.classList.remove('open');
   });
 
   document.querySelectorAll('[name="has_logo"]').forEach(r => {
@@ -1478,6 +1518,13 @@
   async function handleMockupSubmit(e) {
     e.preventDefault();
     const form = e.target;
+    if (!document.getElementById('mf-biz-type').value) {
+      const trigger = document.getElementById('mf-select-trigger');
+      trigger.style.borderColor = '#ff5555';
+      trigger.scrollIntoView({block:'center',behavior:'smooth'});
+      setTimeout(() => trigger.style.borderColor = '', 2000);
+      return;
+    }
     const emailEl = document.getElementById('mf-email');
     const emailErr = document.getElementById('mf-email-error');
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
