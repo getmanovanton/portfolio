@@ -460,6 +460,55 @@
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
   }
 
+  /* ---------- MOCKUP MODAL FORM ---------- */
+  .mockup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);z-index:400;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+  .mockup-overlay.open{display:flex;animation:fadeIn .25s var(--ease)}
+  .mockup-form{background:var(--bg-2);border:1px solid var(--line);border-radius:18px;max-width:560px;width:100%;padding:36px;position:relative;max-height:90vh;overflow-y:auto}
+  @media (max-width:600px){.mockup-form{padding:24px 20px}}
+  .mockup-form h2{font-size:22px;font-weight:500;letter-spacing:-.02em;margin-bottom:6px}
+  .mockup-form .mf-sub{font-size:14px;color:var(--fg-dim);margin-bottom:28px;line-height:1.5}
+  .mockup-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--fg-dim);transition:all .2s;flex-shrink:0}
+  .mockup-close:hover{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+  .mf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:480px){.mf-row{grid-template-columns:1fr}}
+  .mf-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .mf-group label{font-family:var(--mono);font-size:11px;color:var(--fg-mute)}
+  .mf-group input,.mf-group textarea,.mf-group select{
+    background:var(--bg);border:1px solid var(--line);border-radius:8px;
+    padding:10px 14px;font-family:var(--sans);font-size:14px;color:var(--fg);
+    transition:border-color .2s;width:100%;
+  }
+  .mf-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%235a5a5a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .mf-group input:focus,.mf-group textarea:focus,.mf-group select:focus{outline:0;border-color:var(--accent)}
+  .mf-group textarea{resize:vertical;min-height:64px}
+  .mf-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media (max-width:480px){.mf-checks{grid-template-columns:1fr}}
+  .mf-check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-dim);cursor:pointer;padding:8px 12px;border:1px solid var(--line);border-radius:8px;transition:border-color .2s}
+  .mf-check:has(input:checked){border-color:rgba(0,230,118,.4);background:rgba(0,230,118,.05)}
+  .mf-check input{accent-color:var(--accent);flex-shrink:0}
+  .mf-radios{display:flex;gap:8px;flex-wrap:wrap}
+  .mf-radio{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--fg-dim);cursor:pointer;padding:7px 14px;border:1px solid var(--line);border-radius:8px;transition:border-color .2s,color .2s;position:relative}
+  .mf-radio:has(input:checked){border-color:var(--accent);color:var(--accent)}
+  .mf-radio input{position:absolute;opacity:0;pointer-events:none}
+  .mf-divider{height:1px;background:var(--line);margin:18px 0}
+  .mf-submit{width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:500;background:var(--accent);color:#0a0a0a;transition:background .2s;margin-top:6px;cursor:pointer}
+  .mf-submit:hover{background:var(--fg)}
+  .mf-privacy{display:flex;align-items:flex-start;gap:8px;font-family:var(--mono);font-size:11px;color:var(--fg-mute);cursor:pointer;margin-top:12px}
+  .mf-privacy input{margin-top:2px;accent-color:var(--accent);flex-shrink:0}
+
+  /* ---------- SUCCESS MODAL ---------- */
+  .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(18px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+  .success-overlay.open{display:flex;animation:fadeIn .3s var(--ease)}
+  .success-box{background:var(--bg-2);border:1px solid rgba(0,230,118,.25);border-radius:20px;max-width:420px;width:100%;padding:52px 40px;text-align:center;position:relative}
+  @media (max-width:480px){.success-box{padding:40px 24px}}
+  .success-icon{width:76px;height:76px;border-radius:50%;background:rgba(0,230,118,.1);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:popIn .55s var(--ease)}
+  @keyframes popIn{0%{transform:scale(0);opacity:0}65%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
+  .success-box h2{font-size:26px;font-weight:500;letter-spacing:-.02em;margin-bottom:12px}
+  .success-box .s-note{font-family:var(--mono);font-size:11px;color:var(--fg-mute);margin-top:14px}
+  .success-box p{font-size:15px;color:var(--fg-dim);line-height:1.65;margin-bottom:0}
+  .success-close{margin-top:28px;padding:11px 32px;border-radius:10px;font-size:14px;font-weight:500;background:var(--accent);color:#0a0a0a;transition:background .2s;cursor:pointer;display:inline-block}
+  .success-close:hover{background:var(--fg)}
+
 </style>
 </head>
 <body>
@@ -478,7 +527,7 @@
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </div>
-  <a href="#offer" class="nav-cta">Free mockup
+  <a href="#offer" class="nav-cta" onclick="openMockupModal();return false;">Free mockup
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H2M10 1V9" stroke="currentColor" stroke-width="1.4"/></svg>
   </a>
 </nav>
@@ -494,7 +543,7 @@
         </h1>
         <p class="hero-sub r" style="transition-delay:.1s">I build fast, professional websites for Toronto barbershops, salons, restaurants, and service businesses. Most projects launch in 2–3 weeks — from zero to live.</p>
         <div class="hero-cta r" style="transition-delay:.15s">
-          <a href="#offer" class="btn accent">Get a free mockup
+          <a href="#offer" class="btn accent" onclick="openMockupModal();return false;">Get a free mockup
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H2M10 1V9" stroke="currentColor" stroke-width="1.4"/></svg>
           </a>
           <a href="#work" class="btn ghost">See my work
@@ -714,7 +763,7 @@
           <p>Love it? We move forward and build the real thing. Don't love it? Keep the mockup, no hard feelings, no invoice.</p>
         </div>
       </div>
-      <a href="#contact" class="btn accent" style="display:inline-flex">Get my free mockup
+      <button onclick="openMockupModal()" class="btn accent" style="display:inline-flex">Get my free mockup</button>
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H2M10 1V9" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
       <p class="offer-note">Only 3 free mockup slots per week — first come, first served.</p>
@@ -908,7 +957,7 @@
     <h2>Your competitors already have a website.<br>Is theirs better than yours?</h2>
     <p class="cta-sub">Every day without a professional website is a day potential clients are booking someone else. Let's fix that — starting with a free mockup of your homepage.</p>
     <div class="cta-btns">
-      <a href="#contact" class="btn accent">Get a free mockup
+      <a href="#contact" class="btn accent" onclick="openMockupModal();return false;">Get a free mockup
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H2M10 1V9" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
       <a href="https://t.me/hetmanovanton" target="_blank" rel="noopener" class="btn ghost">Message on Telegram
@@ -963,6 +1012,98 @@
   </div>
   <div>Built by hand · <a href="privacy.html">Privacy Policy</a></div>
 </footer>
+
+<!-- MOCKUP FORM MODAL -->
+<div class="mockup-overlay" id="mockup-overlay">
+  <div class="mockup-form">
+    <button class="mockup-close" onclick="closeMockupModal()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <h2>Get your free homepage mockup</h2>
+    <p class="mf-sub">Fill in a few details — I'll send a custom design for your business within 24 hours. No payment, no commitment.</p>
+    <form id="mockup-form-el" action="https://formspree.io/f/mdayzzow" method="POST" onsubmit="handleMockupSubmit(event)">
+      <input type="hidden" name="_subject" value="🎨 Free Mockup Request">
+      <div class="mf-row">
+        <div class="mf-group">
+          <label>Your name *</label>
+          <input type="text" name="name" required placeholder="Jane Doe"/>
+        </div>
+        <div class="mf-group">
+          <label>Business name *</label>
+          <input type="text" name="business_name" required placeholder="Mike's Barbershop"/>
+        </div>
+      </div>
+      <div class="mf-group">
+        <label>Business type *</label>
+        <select name="business_type" required>
+          <option value="" disabled selected>Select your industry…</option>
+          <option>Barbershop</option>
+          <option>Hair Salon / Spa</option>
+          <option>Restaurant / Café</option>
+          <option>Cleaning Service</option>
+          <option>Contractor / Trades</option>
+          <option>Fitness / Yoga / Studio</option>
+          <option>Retail / Boutique</option>
+          <option>Medical / Dental / Beauty</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="mf-group">
+        <label>Your email * (we'll send the mockup here)</label>
+        <input type="email" name="email" id="mf-email" required placeholder="you@yourbusiness.com"/>
+        <span id="mf-email-error" style="display:none;font-family:var(--mono);font-size:11px;color:#ff5555;margin-top:4px"></span>
+      </div>
+      <div class="mf-divider"></div>
+      <div class="mf-group">
+        <label>What should the website do? (pick all that apply)</label>
+        <div class="mf-checks">
+          <label class="mf-check"><input type="checkbox" name="goal_booking" value="Online booking"> Online booking</label>
+          <label class="mf-check"><input type="checkbox" name="goal_quote" value="Quote / contact form"> Quote / contact form</label>
+          <label class="mf-check"><input type="checkbox" name="goal_services" value="Show services & pricing"> Services & pricing</label>
+          <label class="mf-check"><input type="checkbox" name="goal_gallery" value="Photo gallery"> Photo gallery</label>
+          <label class="mf-check"><input type="checkbox" name="goal_ecom" value="Online shop"> Online shop</label>
+          <label class="mf-check"><input type="checkbox" name="goal_other" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="mf-group" style="margin-top:14px">
+        <label>Do you have a logo?</label>
+        <div class="mf-radios">
+          <label class="mf-radio"><input type="radio" name="has_logo" value="Yes"> Yes</label>
+          <label class="mf-radio"><input type="radio" name="has_logo" value="No"> No</label>
+          <label class="mf-radio"><input type="radio" name="has_logo" value="In progress"> In progress</label>
+        </div>
+      </div>
+      <div class="mf-group">
+        <label>Any websites whose style you like? (optional)</label>
+        <input type="text" name="references" placeholder="https://example.com, https://…"/>
+      </div>
+      <div class="mf-group">
+        <label>Anything else I should know? (optional)</label>
+        <textarea name="notes" placeholder="Colors, vibe, specific features, deadline…"></textarea>
+      </div>
+      <div class="mf-divider"></div>
+      <button type="submit" class="mf-submit"><span id="mf-btn-text">Send — get my free mockup</span></button>
+      <label class="mf-privacy">
+        <input type="checkbox" id="mf-privacy-check" required/>
+        I agree to the <a href="privacy.html" target="_blank" style="color:var(--fg-dim);text-decoration:underline">Privacy Policy</a> and consent to being contacted about my mockup.
+      </label>
+    </form>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="success-overlay" id="success-overlay">
+  <canvas id="confetti-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:499"></canvas>
+  <div class="success-box">
+    <div class="success-icon">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16l7 7 13-13" stroke="#00e676" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2>You're in! 🎉</h2>
+    <p>Your free homepage mockup is being designed. Expect it in your inbox <strong style="color:var(--fg)">within 24 hours.</strong></p>
+    <p class="s-note">I may send a follow-up question or two if I need a detail — reply any time.</p>
+    <button class="success-close" onclick="closeSuccessModal()">Awesome, thanks!</button>
+  </div>
+</div>
 
 <!-- MODALS -->
 <div class="modal" id="modal-m1">
@@ -1273,6 +1414,113 @@
     check();
     window.addEventListener('resize', check);
   })();
+
+  /* mockup modal */
+  function openMockupModal() {
+    document.getElementById('mockup-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMockupModal() {
+    document.getElementById('mockup-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('mockup-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('mockup-overlay')) closeMockupModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeMockupModal(); closeSuccessModal(); }
+  });
+
+  async function handleMockupSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const emailEl = document.getElementById('mf-email');
+    const emailErr = document.getElementById('mf-email-error');
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(emailEl.value.trim())) {
+      emailErr.textContent = 'Please enter a valid email address';
+      emailErr.style.display = 'block';
+      emailEl.style.borderColor = '#ff5555';
+      emailEl.focus();
+      return;
+    }
+    emailErr.style.display = 'none';
+    emailEl.style.borderColor = '';
+    const btn = document.getElementById('mf-btn-text');
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        closeMockupModal();
+        form.reset();
+        btn.textContent = 'Send — get my free mockup';
+        openSuccessModal();
+      } else {
+        btn.textContent = 'Error — try again';
+      }
+    } catch {
+      btn.textContent = 'Error — try again';
+    }
+  }
+  window.openMockupModal = openMockupModal;
+  window.closeMockupModal = closeMockupModal;
+  window.handleMockupSubmit = handleMockupSubmit;
+
+  /* success + confetti */
+  function openSuccessModal() {
+    document.getElementById('success-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    launchConfetti();
+  }
+  function closeSuccessModal() {
+    document.getElementById('success-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.closeSuccessModal = closeSuccessModal;
+
+  function launchConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext('2d');
+    const colors = ['#00e676','#ffffff','#00b0ff','#ff6b6b','#ffd93d','#c3f73a','#b388ff'];
+    const pieces = Array.from({length: 110}, () => ({
+      x: Math.random() * canvas.width,
+      y: -20 - Math.random() * 120,
+      w: 7 + Math.random() * 9,
+      h: 3 + Math.random() * 5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 3.5,
+      vy: 2.5 + Math.random() * 4,
+      rot: Math.random() * 360,
+      vrot: (Math.random() - 0.5) * 9,
+      opacity: 1
+    }));
+    let start = null;
+    function draw(ts) {
+      if (!start) start = ts;
+      const elapsed = ts - start;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.rot += p.vrot; p.vy += 0.07;
+        if (elapsed > 2800) p.opacity = Math.max(0, p.opacity - 0.018);
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      if (elapsed < 4200) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    requestAnimationFrame(draw);
+  }
 
   /* lang (stub - no UI) */
   const i18n = {
